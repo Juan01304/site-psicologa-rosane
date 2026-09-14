@@ -1,0 +1,108 @@
+/* Correções específicas para celular / navegador interno do Instagram */
+@media (max-width: 820px) {
+  .site-header {
+    z-index: 6000 !important;
+  }
+
+  #mobile-menu:not([hidden]) {
+    display: block !important;
+    position: fixed !important;
+    top: var(--header-h) !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100dvh - var(--header-h)) !important;
+    padding: 22px 24px 36px !important;
+    overflow-y: auto !important;
+    background: #F2E8D5 !important;
+    opacity: 1 !important;
+    z-index: 5000 !important;
+    border-top: 1px solid rgba(0, 180, 216, 0.24) !important;
+    box-shadow: none !important;
+  }
+
+  #mobile-menu nav {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    width: min(100%, 420px) !important;
+    margin: 0 auto !important;
+    background: #F2E8D5 !important;
+  }
+
+  #mobile-menu nav > a:not(.btn) {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 18px 6px !important;
+    border-bottom: 1px solid rgba(0, 180, 216, 0.24) !important;
+    color: #07566A !important;
+    background: #F2E8D5 !important;
+    font-family: "DM Sans", system-ui, sans-serif !important;
+    font-size: 1.12rem !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    letter-spacing: 0 !important;
+    text-align: left !important;
+    transform: none !important;
+  }
+
+  #mobile-menu .btn {
+    width: 100% !important;
+    margin-top: 22px !important;
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero-visual {
+    min-height: 575px !important;
+    padding-top: 14px !important;
+  }
+
+  .floating-card {
+    min-width: 0 !important;
+    max-width: 158px !important;
+    padding: 9px 11px !important;
+  }
+
+  .floating-card span {
+    font-size: 0.70rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .floating-card strong {
+    margin-top: 4px !important;
+    font-size: 0.86rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .floating-card-top {
+    top: 12px !important;
+    left: 0 !important;
+  }
+
+  .floating-card-bottom {
+    right: 0 !important;
+    bottom: 205px !important;
+  }
+
+  .portrait-note {
+    right: 16px !important;
+    bottom: 15px !important;
+    left: 16px !important;
+    padding: 13px 14px !important;
+  }
+
+  .portrait-note strong {
+    font-size: 0.93rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .portrait-note small {
+    font-size: 0.76rem !important;
+    line-height: 1.25 !important;
+  }
+}
