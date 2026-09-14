@@ -1,4 +1,9 @@
 (() => {
+  const mobileFix = document.createElement("link");
+  mobileFix.rel = "stylesheet";
+  mobileFix.href = "mobile-fix.css?v=20260914-3";
+  document.head.appendChild(mobileFix);
+
   const header = document.querySelector(".site-header");
   const menuToggle = document.querySelector(".menu-toggle");
   const mobileMenu = document.querySelector("#mobile-menu");
@@ -27,6 +32,7 @@
     menuToggle.setAttribute("aria-label", "Fechar menu");
     mobileMenu.hidden = false;
     document.body.classList.add("menu-open");
+    mobileMenu.scrollTop = 0;
   };
   menuToggle?.addEventListener("click", () => {
     const expanded = menuToggle.getAttribute("aria-expanded") === "true";
