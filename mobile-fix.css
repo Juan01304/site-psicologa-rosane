@@ -1,14 +1,8 @@
-/* Correções específicas para celular / navegador interno do Instagram */
+/* Correções específicas para celular / navegador interno do Instagram.
+   Usa apenas as variáveis da paleta principal: não altera as cores aprovadas. */
 @media (max-width: 820px) {
   .site-header {
     z-index: 6000 !important;
-    background: #F2E8D5 !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-
-  body.menu-open {
-    background: #F2E8D5 !important;
   }
 
   body.menu-open main,
@@ -30,10 +24,10 @@
     min-height: calc(100vh - var(--header-h)) !important;
     padding: 22px 24px 36px !important;
     overflow-y: auto !important;
-    background: #F2E8D5 !important;
+    background: var(--bg) !important;
     opacity: 1 !important;
     z-index: 5000 !important;
-    border-top: 1px solid rgba(0, 180, 216, 0.24) !important;
+    border-top: 1px solid var(--line) !important;
     box-shadow: none !important;
   }
 
@@ -43,7 +37,7 @@
     gap: 0 !important;
     width: min(100%, 420px) !important;
     margin: 0 auto !important;
-    background: #F2E8D5 !important;
+    background: var(--bg) !important;
   }
 
   #mobile-menu nav > a:not(.btn) {
@@ -52,9 +46,8 @@
     width: 100% !important;
     margin: 0 !important;
     padding: 18px 6px !important;
-    border-bottom: 1px solid rgba(0, 180, 216, 0.24) !important;
-    color: #07566A !important;
-    background: #F2E8D5 !important;
+    border-bottom: 1px solid var(--line) !important;
+    background: transparent !important;
     font-family: "DM Sans", system-ui, sans-serif !important;
     font-size: 1.08rem !important;
     font-weight: 700 !important;
