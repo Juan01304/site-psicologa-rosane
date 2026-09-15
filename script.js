@@ -1,22 +1,33 @@
 (() => {
   const mobileFix = document.createElement("link");
   mobileFix.rel = "stylesheet";
-  mobileFix.href = "mobile-fix.css?v=20260914-3";
+  mobileFix.href = "mobile-fix.css?v=20260915-1";
   document.head.appendChild(mobileFix);
 
   const header = document.querySelector(".site-header");
   const menuToggle = document.querySelector(".menu-toggle");
   const mobileMenu = document.querySelector("#mobile-menu");
+
+  // Tira o menu de dentro do header para evitar bugs de position: fixed
+  // no navegador interno do Instagram sem alterar a aparência do cabeçalho.
+  if (mobileMenu && mobileMenu.parentElement !== document.body) {
+    document.body.appendChild(mobileMenu);
+  }
+
   const mobileLinks = mobileMenu?.querySelectorAll("a") ?? [];
   const faqButtons = document.querySelectorAll(".faq-question");
   const year = document.querySelector("#year");
   const revealElements = document.querySelectorAll(".reveal");
+
   if (year) year.textContent = new Date().getFullYear();
+
   const updateHeader = () => {
     header?.classList.toggle("scrolled", window.scrollY > 12);
   };
+
   updateHeader();
   window.addEventListener("scroll", updateHeader, { passive: true });
+
   const closeMenu = () => {
     if (!menuToggle || !mobileMenu) return;
     menuToggle.classList.remove("active");
@@ -25,6 +36,7 @@
     mobileMenu.hidden = true;
     document.body.classList.remove("menu-open");
   };
+
   const openMenu = () => {
     if (!menuToggle || !mobileMenu) return;
     menuToggle.classList.add("active");
@@ -34,29 +46,36 @@
     document.body.classList.add("menu-open");
     mobileMenu.scrollTop = 0;
   };
+
   menuToggle?.addEventListener("click", () => {
     const expanded = menuToggle.getAttribute("aria-expanded") === "true";
     expanded ? closeMenu() : openMenu();
   });
+
   mobileLinks.forEach((link) => link.addEventListener("click", closeMenu));
+
   window.addEventListener("resize", () => {
     if (window.innerWidth > 1050) closeMenu();
   });
+
   faqButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const item = button.closest(".faq-item");
       if (!item) return;
       const isOpen = item.classList.contains("open");
+
       document.querySelectorAll(".faq-item.open").forEach((openItem) => {
         if (openItem !== item) {
           openItem.classList.remove("open");
           openItem.querySelector(".faq-question")?.setAttribute("aria-expanded", "false");
         }
       });
+
       item.classList.toggle("open", !isOpen);
       button.setAttribute("aria-expanded", String(!isOpen));
     });
   });
+
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
       (entries, obs) => {
@@ -72,6 +91,7 @@
         rootMargin: "0px 0px -40px 0px",
       }
     );
+
     revealElements.forEach((el) => observer.observe(el));
   } else {
     revealElements.forEach((el) => el.classList.add("is-visible"));
